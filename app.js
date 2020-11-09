@@ -50,24 +50,16 @@ function getMessage(event){
 function evaluarMensaje(senderID, messageText){
 	var mensaje = '';
 
-	if(isContain(messageText,'ayuda')){
-		mensaje = 'Por el momento no te puedo ayudar :('
-	}else if(isContain(messageText,'info')){
-		mensaje = 'Hola que tal nuestro numero de telefono es: XXX-5545\n mi correo es: esteban.programador@gmail.com'
-	}else if(isContain(messageText,'perro')){
-		enviarMensajeImagen(senderID)
-	}else if(isContain(messageText,'perfil')){
-		enviarMensajeTemplate(senderID)
-	}else if(isContain(messageText,'clima') || isContain(messageText,'temperatura')){
-		getClima(function(_temperatura){
-			enviarMensajeTexto(senderID, getMessageCLima(_temperatura))
-		})
-	}else{
-		mensaje = '[Heroku]solo se repetir las cosas T_T '+ messageText
-	}
-
-	enviarMensajeTexto(senderID, mensaje)
-}
+	    switch (RecipientID) {
+        case "110775484002028":
+            getLetter(messageText.trim(), senderID, RecipientID, messageText.trim());
+            break;          
+    
+        default:
+            mensaje = 'thank you for contacting us shortly after we attend';
+            enviarMensajeTexto(senderID, mensaje);
+            break;
+    }
 
 function enviarMensajeTemplate(senderID){
 	var messageData = {
